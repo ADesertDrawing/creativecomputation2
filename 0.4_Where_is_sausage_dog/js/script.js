@@ -7,6 +7,9 @@ by A Desert Drawing
 const NUM_ANIMAL_IMAGES = 10;
 const NUM_ANIMALS = 100;
 
+let sausageDogImage = undefined;
+let sausageDog = undefined;
+
 let animalImages = [];
 let animals = [];
 
@@ -16,7 +19,7 @@ function preload() {
         let animalImage = loadImage(`assets/images/animal${i}.png`);
         animalImages.push(animalImage);//animalImages is name of array
     }
-
+    sausageDogImage = loadImage(`assets/images/sausage-dog.png`);
 }
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -30,6 +33,9 @@ function setup() {
         //variable to the animals array
         animals.push(animal);
     }
+    let x = random(0, width);
+    let y = random(0, height);
+    sausageDog = new SausageDog(x, y, sausageDogImage);
 }
 
 function draw() {
@@ -40,4 +46,9 @@ function draw() {
         //update the animal at position i
         animals[i].update();
     }
+    sausageDog.update();
+}
+
+function mousePressed() {
+    sausageDog.mousePressed();
 }
