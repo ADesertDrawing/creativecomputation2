@@ -3,8 +3,6 @@
 by A Desert Drawing
 */
 "use strict";
-let hello = function () { // Note how the function definition has no name!
-    alert(`Hello!`);
-};
-
-setTimeout(hello, 5000); // Call the function inside the hello variable after 5000 milliseconds
+setTimeout(function () {
+    alert(`Hello!`)
+}, 5000); // Call the anonymous function provided after 5000 milliseconds
