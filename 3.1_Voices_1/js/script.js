@@ -3,11 +3,20 @@
 by A Desert Drawing
 */
 "use strict";
+
+let recognizer = new p5.SpeechRec();
+
+
 function setup() {
     createCanvas(500, 500);
-
+    recognizer.onResult = handleResult;
+    recognizer.start();
 }
 
 function draw() {
-    background(0, 0, 0);
+
+}
+
+function handleResult() {
+    console.log(recognizer.resultString);
 }
