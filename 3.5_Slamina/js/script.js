@@ -141,15 +141,42 @@ const animals = [
     "zebra"
 ];
 
+let currentAnimal = ``;
+let currentAnswer = ``;
+
+const speechSynthesizer = new p5.Speech();
+const speechRecognizer = new p5.SpeechRec();
+
 function setup() {
     createCanvas(500, 500);
-
+    speechRecognizer.continous = true;
+    //no () at the end here as we're not calling it but telling the name 
+    speechRecognizer.onResult = handleSpeechInput;
+    speechRecognizer.start();
 }
 
 function draw() {
 
 }
 
-function handleSpeechInput() {
-
+function mousePressed() {
+    currentAnimal = random(animals);
+    let reverseAnimal = reverseString(currentAnimal);
+    speechSynthesizer.speak(reverseAnimal);
 }
+
+
+/**
+Reverses the provided string
+*/
+function reverseString(string) {
+    // Split the string into an array of characters
+    let characters = string.split(``);
+    // Reverse the array of characters
+    let reverseCharacters = characters.reverse();
+    // Join the array of characters back into a string
+    let result = reverseCharacters.join(``);
+    // Return the result
+    return result;
+}
+
