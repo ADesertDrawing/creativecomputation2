@@ -7,26 +7,29 @@ by A Desert Drawing
 const speechRecognizer = new p5.SpeechRec();
 let currentSpeech = `?`;
 
+
 function setup() {
     createCanvas(500, 500);
-
     speechRecognizer.onResult = handleSpeechInput;
+    speechRecognizer.continuous = true;
     speechRecognizer.start();
 }
 
+
 function draw() {
-    background(255, 100, 156);
-    textAlign(CENTER, CENTER);
-    textSize(24);
-    text(`Say that you love me`, width / 2, height / 3);
-    text(currentSpeech, width / 2, height / 2);
+    background(0);
+    if (lightsAreOn) {
+        background(255);
+    }
 }
 
+
 function handleSpeechInput() {
-    if (speechRecognizer.resultString === `I love you`) {
-        currentSpeech = `You're damn right you do`;
+    console.log(speechRecognizer.resultString);
+    if (speechRecognizer.resultString.toLowerCase() === `turn the lights on`) {
+        lightsAreOn = true;
     }
-    else {
-        currentSpeech = `:(`;
+    else if (speechRecognizer.resultString.toLowerCase() === `turn the lights off`) {
+        lightsAreOn = false;
     }
 }
