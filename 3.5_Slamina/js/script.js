@@ -156,7 +156,16 @@ function setup() {
 }
 
 function draw() {
-
+    background(230, 182, 54);
+    if (currentAnswer === currentAnimal) {
+        fill(0, 255, 0);
+    }
+    else {
+        fill(200, 50, 40);
+    }
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text(currentAnswer, width / 2, hight / 2);
 }
 
 function mousePressed() {
