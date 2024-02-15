@@ -165,7 +165,18 @@ function mousePressed() {
     speechSynthesizer.speak(reverseAnimal);
 }
 
-
+function handleSpeechInput() {
+    let guessedAnimal = `What???`;
+    if (speechRecognizer.resultValue) {
+        let lowerCaseResult = speechRecognizer.resultString.toLowerCase();
+        let parts = lowerCaseResult.split(`i think it is `);
+        if (parts.length > 1) {
+            guessedAnimal = parts[1];
+        }
+    }
+    currentAnswer = guessedAnimal;
+    console.log(currentAnswer);
+}
 /**
 Reverses the provided string
 */
