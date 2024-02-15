@@ -5,19 +5,27 @@ by A Desert Drawing
 "use strict";
 
 // A global variable to store our data in
-let tarotData = undefined;
+let tarot;
 // A global variable to store our fortune in
-let fortune = `No fortune found yet...`;
+let fortune;
 
+function preload() {
+    // Load the JSON data from a file online!
+    tarot = loadJSON(`https://raw.githubusercontent.com/dariusk/corpora/master/data/divination/tarot_interpretations.json`);
+}
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
+    //Choose a random card
+    let card = random(tarot.tarot_interpretations);
+    // Choose a random fortune
+    fortune = random(card.fortune_telling);
 }
 
 function draw() {
     background(0);
 
+    // Get the first shadow meaning into a variable by following the path through the tarot object
 
     // Display the meaning
     push();
@@ -28,14 +36,3 @@ function draw() {
     pop();
 }
 
-function mousePressed() {
-    loadJSON(`assets/data/tarot_interpretations.json`, tarotLoaded);
-}
-
-function tarotLoaded(data) {
-    tarotData = data;
-    //Choose a random card
-    let card = random(tarotData.tarot_interpretations);
-    // Choose a random fortune
-    fortune = random(card.fortune_telling);
-}
