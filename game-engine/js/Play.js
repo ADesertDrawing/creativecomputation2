@@ -7,16 +7,27 @@ class Play extends Phaser.Scene {
 
     create() {
         this.wall = this.physics.add.image(100, 100, 'wall');
+        this.wall.setImmovable(true);
         this.wall.setTint(0xdd3333);
 
         this.avatar = this.physics.add.sprite(200, 200, `avatar`);
+
+        this.collectable = this.physics.add.image(300, 300, `wall`);
+        this.collectable.setTint(0x33dd33);
 
         this.createAnimations();
 
         this.avatar.play(`avatar-idle`);
         this.avatar.setCollideWorldBounds(true);
 
+        this.physics.add.collider(this.avatar, this.wall);
+        this.physics.add.overlap(this.avatar, this.collectable, this.collectItem, null, this);
+
         this.cursors = this.input.keyboard.createCursorKeys();
+    }
+
+    collectItem(avatar, collectable) {
+        collectable.destroy();
     }
 
     update() {
