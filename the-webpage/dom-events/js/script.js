@@ -1,11 +1,5 @@
-let mainHeading = document.getElementById(`main-heading`);
-let subHeading = document.getElementById(`sub-heading`);
+let paragraph = document.getElementById(`paragraph`);
 
-mainHeading.addEventListener(`click`, setRedTextColor);
-subHeading.addEventListener(`click`, setRedTextColor);
-
-function setRedTextColor(event) {
-    // in here I don't know which got clicked
-    //I need event.target to tell me which
-    event.target.style[`color`] = `#ff0000`;
-}
+window.addEventListener(`offline`, function (event) {
+    mainHeading.innerText = `:(`;
+});
