@@ -1,13 +1,11 @@
-let paragraph = document.getElementById(`paragraph`);
+let mainHeading = document.getElementById(`main-heading`);
+let subHeading = document.getElementById(`sub-heading`);
 
-setInterval(blink, 500);
+mainHeading.addEventListener(`click`, setRedTextColor);
+subHeading.addEventListener(`click`, setRedTextColor);
 
-function blink() {
-    let opacity = paragraph.style[`opacity`];
-    if (opacity === `1`) {
-        paragraph.style[`opacity`] = `0`;
-    }
-    else {
-        paragraph.style[`opacity`] = `1`;
-    }
+function setRedTextColor(event) {
+    // in here I don't know which got clicked
+    //I need event.target to tell me which
+    event.target.style[`color`] = `#ff0000`;
 }
