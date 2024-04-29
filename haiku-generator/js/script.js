@@ -8,18 +8,18 @@ A Desert Drawing
 "use strict";
 
 let fiveSyllableLines = [
-    `O, to be a tree`,
-    `The cat does not know`,
-    `We are all forests`,
-    `You have done your best`,
-    `They are all gone now`
+    `The cat knows the tree`,
+    `See how the tree forgets`,
+    `The question is yes`,
+    `You have found the way`,
+    `The cat blinks. Again.`
 ];
 let sevenSyllableLines = [
-    `Say the things left unsaid`,
-    `Never believe the wind's lies`,
-    `The autumn stretches its legs`,
-    `Nothing can satisfy you`,
-    `They will not come back again`
+    `Nothing is said more than once`,
+    `If you need to ask, you know`,
+    `You pass unheard and unseen`,
+    `You would like a cup of tea`,
+    `Neither half full nor empty`
 ];
 
 let line1 = random(fiveSyllableLines);
